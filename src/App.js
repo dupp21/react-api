@@ -6,7 +6,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      counter : 0
+      count : 0
     }
   }
 
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <h1>Hello World</h1>
-        State : {this.state.counter}
+        State : {this.state.count}
       </div>
     );
   }
