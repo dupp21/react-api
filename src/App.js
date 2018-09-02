@@ -16,6 +16,12 @@ class App extends Component {
     });
   };
 
+  handleDecrement = () => {
+    this.setState({
+      count: this.state.count - 1
+    });
+  };
+
   render() {
     return (
       <div>
@@ -23,6 +29,8 @@ class App extends Component {
         State : {this.state.count}
         <br />
         <button onClick={() => this.handleIncrement()}> + </button>
+        {" "}
+        <button onClick={() => this.handleDecrement()}> - </button>
       </div>
     );
   }
