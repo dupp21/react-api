@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./Header";
+import AddressBookDetail from "./AddressBookDetail";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      people : [
+      people: [
         {
           name: "Budi Budiman",
           address: "Jl. Kemang Raya No. 225"
@@ -16,13 +17,14 @@ class App extends Component {
           address: "Jl. Panjang No. 30"
         }
       ]
-    }
+    };
   }
 
   render() {
     return (
       <div>
         <Header />
+        <AddressBookDetail name="Susi Susanti" address="Jl. pondok Indah Raya" />
       </div>
     );
   }
