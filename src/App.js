@@ -1,20 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
-      count : 0
-    }
+      count: 0
+    };
   }
+
+  handleIncrement = () => {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
 
   render() {
     return (
       <div>
         <h1>Hello World</h1>
         State : {this.state.count}
+        <br />
+        <button onClick={() => this.handleIncrement()}> + </button>
       </div>
     );
   }
