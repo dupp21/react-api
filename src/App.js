@@ -16,15 +16,41 @@ class App extends Component {
           name: "Andi Supandi",
           address: "Jl. Panjang No. 30"
         }
-      ]
+      ],
+      name: "",
+      address: ""
     };
   }
+
+  handleOnChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
   render() {
     return (
       <div>
         <Header />
-        <AddressBookDetail name="Susi Susanti" address="Jl. pondok Indah Raya" />
+        Name :{" "}
+        <input
+          type="text"
+          name="name"
+          value={this.state.name}
+          onChange={this.handleOnChange}
+        />{" "}
+        Address :{" "}
+        <input
+          type="text"
+          name="address"
+          value={this.state.address}
+          onChange={this.handleOnChange}
+        />
+        <br />
+        <br />
+        {this.state.people.map(people => (
+          <AddressBookDetail name={people.name} address={people.address} />
+        ))}
       </div>
     );
   }
