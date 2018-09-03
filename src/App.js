@@ -17,8 +17,8 @@ class App extends Component {
           address: "Jl. Panjang No. 30"
         }
       ],
-      name: "",
-      address: ""
+      input_name: "",
+      input_address: ""
     };
   }
 
@@ -35,14 +35,14 @@ class App extends Component {
         Name :{" "}
         <input
           type="text"
-          name="name"
+          name="input_name"
           value={this.state.name}
           onChange={this.handleOnChange}
         />{" "}
         Address :{" "}
         <input
           type="text"
-          name="address"
+          name="input_address"
           value={this.state.address}
           onChange={this.handleOnChange}
         />
@@ -57,3 +57,4 @@ class App extends Component {
 }
 
 export default App;
+
