@@ -30,12 +30,21 @@ class App extends Component {
 
   addPeople = () => {
     const prevPeople = this.state.people.slice();
-    
+
     this.setState({
       people: prevPeople.concat({
         name: this.state.input_name,
         address: this.state.input_address
       })
+    });
+  };
+
+  deletePeople = index => {
+    const prevPeople = this.state.people.slice();
+    prevPeople.splice(index, 1);
+
+    this.setState({
+      people: prevPeople
     });
   };
 
@@ -60,8 +69,14 @@ class App extends Component {
         <button onClick={() => this.addPeople()}>Add</button>
         <br />
         <br />
-        {this.state.people.map(people => (
-          <AddressBookDetail name={people.name} address={people.address} />
+        {this.state.people.map((people, index) => (
+          <AddressBookDetail
+            name={people.name}
+            address={people.address}
+            key={index}
+            index={index}
+            deletePeople={this.deletePeople}
+          />
         ))}
       </div>
     );
