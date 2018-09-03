@@ -36,14 +36,14 @@ class App extends Component {
         <input
           type="text"
           name="input_name"
-          value={this.state.name}
+          value={this.state.input_name}
           onChange={this.handleOnChange}
         />
         Address :
         <input
           type="text"
           name="input_address"
-          value={this.state.address}
+          value={this.state.input_name}
           onChange={this.handleOnChange}
         />
         <br />
