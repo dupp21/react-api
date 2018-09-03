@@ -29,12 +29,14 @@ class App extends Component {
   };
 
   addPeople = () => {
-    this.setState(prevState => ({
-      people: [
-        ...prevState.people,
-        { name: this.state.input_name, address: this.state.input_address }
-      ]
-    }));
+    const prevPeople = this.state.people.slice();
+    
+    this.setState({
+      people: prevPeople.concat({
+        name: this.state.input_name,
+        address: this.state.input_address
+      })
+    });
   };
 
   render() {
@@ -45,14 +47,14 @@ class App extends Component {
         <input
           type="text"
           name="input_name"
-          value={this.state.name}
+          value={this.state.input_name}
           onChange={this.handleOnChange}
         />
         Address :
         <input
           type="text"
           name="input_address"
-          value={this.state.address}
+          value={this.state.input_address}
           onChange={this.handleOnChange}
         />
         <button onClick={() => this.addPeople()}>Add</button>
