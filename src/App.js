@@ -28,6 +28,15 @@ class App extends Component {
     });
   };
 
+  addPeople = () => {
+    this.setState(prevState => ({
+      people: [
+        ...prevState.people,
+        { name: this.state.input_name, address: this.state.input_address }
+      ]
+    }));
+  };
+
   render() {
     return (
       <div>
@@ -46,6 +55,7 @@ class App extends Component {
           value={this.state.address}
           onChange={this.handleOnChange}
         />
+        <button onClick={() => this.addPeople()}>Add</button>
         <br />
         <br />
         {this.state.people.map(people => (
