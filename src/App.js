@@ -24,7 +24,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <AddressBookDetail name="Susi Susanti" address="Jl. pondok Indah Raya" />
+        {this.state.people.map(people => (
+          <AddressBookDetail name={people.name} address={people.address} />
+        ))}
       </div>
     );
   }
