@@ -17,8 +17,8 @@ class App extends Component {
           address: "Jl. Panjang No. 30"
         }
       ],
-      name: "",
-      address: ""
+      input_name: "",
+      input_address: ""
     };
   }
 
@@ -28,34 +28,24 @@ class App extends Component {
     });
   };
 
-  addPeople = () => {
-    this.setState(prevState => ({
-      people: [
-        ...prevState.people,
-        { name: this.state.name, address: this.state.address }
-      ]
-    }));
-  };
-
   render() {
     return (
       <div>
         <Header />
-        Name :{" "}
+        Name :
         <input
           type="text"
-          name="name"
+          name="input_name"
           value={this.state.name}
           onChange={this.handleOnChange}
-        />{" "}
-        Address :{" "}
+        />
+        Address :
         <input
           type="text"
-          name="address"
+          name="input_address"
           value={this.state.address}
           onChange={this.handleOnChange}
-        />{" "}
-        <button onClick={() => this.addPeople()}>Add</button>
+        />
         <br />
         <br />
         {this.state.people.map(people => (
