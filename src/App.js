@@ -32,14 +32,14 @@ class App extends Component {
     return (
       <div>
         <Header />
-        Name :{" "}
+        Name :
         <input
           type="text"
           name="input_name"
           value={this.state.name}
           onChange={this.handleOnChange}
-        />{" "}
-        Address :{" "}
+        />
+        Address :
         <input
           type="text"
           name="input_address"
@@ -57,4 +57,3 @@ class App extends Component {
 }
 
 export default App;
-
