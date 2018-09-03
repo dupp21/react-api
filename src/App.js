@@ -29,13 +29,14 @@ class App extends Component {
   };
 
   addPeople = () => {
-    const prevPeople = this.state.people.slice();
+    let prevPeople = this.state.people.slice();
+    prevPeople.push({
+      name: this.state.input_name,
+      address: this.state.input_address
+    });
 
     this.setState({
-      people: prevPeople.concat({
-        name: this.state.input_name,
-        address: this.state.input_address
-      })
+      people: prevPeople
     });
   };
 
