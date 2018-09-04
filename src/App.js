@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Home from "./Home";
+import About from "./About";
+import Topics from "./Topics";
 
 class App extends Component {
   render() {
     return (
       <div>
-        Hello Router
+        <Home />
+        <About />
+        <Topics />
       </div>
     );
   }
