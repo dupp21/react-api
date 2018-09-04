@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import EmployeeDetail from "./EmployeeDetail";
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +20,13 @@ class App extends Component {
   }
 
   render() {
-    return <div>Hello React + API</div>;
+    return (
+      <div>
+        {this.state.employees.forEach(employee => (
+          <EmployeeDetail name={employee.name} />
+        ))}
+      </div>
+    );
   }
 }
 
