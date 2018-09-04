@@ -5,6 +5,7 @@ const EmployeeDetail = props => {
     <div>
       First name : {props.first_name} <br />
       Last Name : {props.last_name}
+      <hr/>
     </div>
   );
 };

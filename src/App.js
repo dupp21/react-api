@@ -12,18 +12,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/employees").then(res =>
+    axios.get("http://localhost:3000/employees").then(res => {
       this.setState({
-        employees: res.data
-      })
-    );
+        employees: res.data.data
+      });
+    });
   }
 
   render() {
     return (
       <div>
-        {this.state.employees.forEach(employee => (
-          <EmployeeDetail name={employee.name} />
+        {this.state.employees.map(employee => (
+          <EmployeeDetail
+            first_name={employee.first_name}
+            last_name={employee.last_name}
+          />
         ))}
       </div>
     );
