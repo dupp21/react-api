@@ -11,15 +11,17 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-            <Link to="/">Home</Link>|
-            <Link to="/about">About</Link>|
+            <Link to="/">Home</Link>|<Link to="/about">About</Link>|
             <Link to="/topics">Topics</Link>
           </nav>
 
           <hr />
 
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route
+            path="/about"
+            render={props => <About name="budi" {...props} />}
+          />
           <Route path="/topics" component={Topics} />
         </div>
       </Router>
