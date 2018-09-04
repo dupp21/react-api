@@ -17,8 +17,10 @@ class App extends Component {
           address: "Jl. Panjang No. 30"
         }
       ],
+      filtered_people: [],
       input_name: "",
-      input_address: ""
+      input_address: "",
+      input_search: ""
     };
   }
 
@@ -49,6 +51,18 @@ class App extends Component {
     });
   };
 
+  searchPeople = async e => {
+    await this.handleOnChange(e);
+    let prevPeople = this.state.people.slice();
+    prevPeople = prevPeople.filter(people =>
+      people.name.includes(this.state.input_search)
+    );
+    
+    await this.setState({
+      filtered_people: prevPeople
+    });
+  };
+
   render() {
     return (
       <div>
@@ -68,17 +82,35 @@ class App extends Component {
           onChange={this.handleOnChange}
         />
         <button onClick={() => this.addPeople()}>Add</button>
+        Search :
+        <input
+          type="text"
+          name="input_search"
+          value={this.state.input_search}
+          onChange={this.searchPeople}
+        />
         <br />
         <br />
-        {this.state.people.map((people, index) => (
-          <AddressBookDetail
-            name={people.name}
-            address={people.address}
-            key={index}
-            index={index}
-            deletePeople={this.deletePeople}
-          />
-        ))}
+        {this.state.input_search === "" &&
+          this.state.people.map((people, index) => (
+            <AddressBookDetail
+              name={people.name}
+              address={people.address}
+              key={index}
+              index={index}
+              deletePeople={this.deletePeople}
+            />
+          ))}
+        {this.state.input_search !== "" &&
+          this.state.filtered_people.map((people, index) => (
+            <AddressBookDetail
+              name={people.name}
+              address={people.address}
+              key={index}
+              index={index}
+              deletePeople={this.deletePeople}
+            />
+          ))}
       </div>
     );
   }
