@@ -41,7 +41,7 @@ class App extends Component {
   };
 
   deletePeople = index => {
-    const prevPeople = this.state.people.slice();
+    let prevPeople = this.state.people.slice();
     prevPeople.splice(index, 1);
 
     this.setState({
