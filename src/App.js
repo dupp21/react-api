@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import axios from "axios";
 import "./App.css";
 import TodoDetail from "./TodoDetail";
@@ -26,9 +25,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.todos.forEach(todo => 
-          {return <div>test</div>}
-        )}
+        {this.state.todos.map(todo => (
+          <TodoDetail description={todo.description} done={todo.done} />
+        ))}
       </div>
     );
   }

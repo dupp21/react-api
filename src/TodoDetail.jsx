@@ -4,7 +4,7 @@ const TodoDetail = props => {
   return (
     <div>
       Description : {props.description} <br />
-      Done : {props.done} <br/>
+      Done : {JSON.stringify(props.done)} <br /> <br/>
     </div>
   );
 };
