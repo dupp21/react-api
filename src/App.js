@@ -7,6 +7,7 @@ class App extends Component {
     super(props);
     this.state = {
       todos: [],
+      filtered_todos: [],
       input_description: "",
       input_done: false,
       input_search: ""
@@ -48,9 +49,23 @@ class App extends Component {
     this.getAllTodos();
   };
 
+  searchTodo = async () => {
+    console.log(this.state.input_search);
+    const description = this.state.input_search;
+    await axios
+      .get(`http://localhost:3000/todos/search?description=${description}`)
+      .then(res => {
+        this.setState({
+          filtered_todos: res.data
+        });
+      });
+  };
+
   render() {
     return (
       <div>
+        {/* ----------------------------------------------------------------------------------------------- */}
+        {/* ADD SEARCH INPUT FORM */}
         Description :
         <input
           type="text"
@@ -66,6 +81,9 @@ class App extends Component {
           value={this.state.input_search}
           onChange={this.handleChange}
         />
+        <button onClick={() => this.searchTodo()}>Search</button>
+        {/* ----------------------------------------------------------------------------------------------- */}
+        {/* DISPLAY RESULT */}
         {this.state.todos.map((todo, index) => (
           <TodoDetail
             description={todo.description}
