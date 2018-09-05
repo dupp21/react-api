@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       todos: [],
       input_description: "",
-      input_done: false
+      input_done: false,
+      input_search: ""
     };
   }
 
@@ -58,6 +59,13 @@ class App extends Component {
           onChange={this.handleChange}
         />
         <button onClick={() => this.addTodo()}>Add</button>
+        Search :
+        <input
+          type="text"
+          name="input_search"
+          value={this.state.input_search}
+          onChange={this.handleChange}
+        />
         {this.state.todos.map((todo, index) => (
           <TodoDetail
             description={todo.description}
