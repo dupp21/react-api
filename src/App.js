@@ -6,7 +6,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: [],
+      input_description: "",
+      input_status: false
     };
   }
 
@@ -22,6 +24,12 @@ class App extends Component {
     });
   };
 
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   deleteTodo = async index => {
     await axios
       .delete(`http://localhost:3000/todos/${index}`)
@@ -32,6 +40,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        Description :
+        <input
+          type="text"
+          name="input_description"
+          value={this.state.input_description}
+          onChange={this.handleChange}
+        />
         {this.state.todos.map((todo, index) => (
           <TodoDetail
             description={todo.description}
