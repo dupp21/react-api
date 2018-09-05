@@ -60,6 +60,14 @@ class App extends Component {
       });
   };
 
+  cancelSearch = async () => {
+    this.setState({
+      filtered_todos: [],
+      input_search: ""
+    });
+    this.getAllTodos();
+  };
+
   render() {
     return (
       <div>
@@ -81,6 +89,7 @@ class App extends Component {
           onChange={this.handleChange}
         />
         <button onClick={() => this.searchTodo()}>Search</button>
+        <button onClick={() => this.cancelSearch()}>Cancel</button>
         {/* ----------------------------------------------------------------------------------------------- */}
         {/* DISPLAY RESULT */}
         {this.state.filtered_todos.length === 0 &&
