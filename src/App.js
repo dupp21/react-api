@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       todos: [],
       input_description: "",
-      input_status: false
+      input_done: false
     };
   }
 
