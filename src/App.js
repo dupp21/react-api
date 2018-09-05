@@ -50,7 +50,6 @@ class App extends Component {
   };
 
   searchTodo = async () => {
-    console.log(this.state.input_search);
     const description = this.state.input_search;
     await axios
       .get(`http://localhost:3000/todos/search?description=${description}`)
@@ -84,15 +83,26 @@ class App extends Component {
         <button onClick={() => this.searchTodo()}>Search</button>
         {/* ----------------------------------------------------------------------------------------------- */}
         {/* DISPLAY RESULT */}
-        {this.state.todos.map((todo, index) => (
-          <TodoDetail
-            description={todo.description}
-            done={todo.done}
-            key={index}
-            index={index}
-            deleteTodo={this.deleteTodo}
-          />
-        ))}
+        {this.state.filtered_todos.length === 0 &&
+          this.state.todos.map((todo, index) => (
+            <TodoDetail
+              description={todo.description}
+              done={todo.done}
+              key={index}
+              index={index}
+              deleteTodo={this.deleteTodo}
+            />
+          ))}
+        {this.state.filtered_todos.length !== 0 &&
+          this.state.filtered_todos.map((todo, index) => (
+            <TodoDetail
+              description={todo.description}
+              done={todo.done}
+              key={index}
+              index={index}
+              deleteTodo={this.deleteTodo}
+            />
+          ))}
       </div>
     );
   }
