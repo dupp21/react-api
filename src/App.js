@@ -12,7 +12,11 @@ class App extends Component {
   }
 
   componentWillMount = async () => {
-    axios.get("http://localhost:3000/todos").then(res => {
+    this.getAllTodos();
+  };
+
+  getAllTodos = async () => {
+    await axios.get("http://localhost:3000/todos").then(res => {
       this.setState({
         todos: res.data
       });
