@@ -14,7 +14,7 @@ class App extends Component {
   componentWillMount = async () => {
     axios.get("http://localhost:3000/todos").then(res => {
       this.setState({
-        todos: res.data
+        todos: res.data.data
       });
     });
   };
