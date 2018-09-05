@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       todos: [],
       input_description: "",
-      input_status: false
+      input_done: false
     };
   }
 
@@ -37,6 +37,16 @@ class App extends Component {
     this.getAllTodos();
   };
 
+  addTodo = async () => {
+    await axios
+      .post(`http://localhost:3000/todos`, {
+        description: this.state.input_description,
+        done: this.state.input_done
+      })
+      .then(res => console.log(res));
+    this.getAllTodos();
+  };
+
   render() {
     return (
       <div>
@@ -47,6 +57,7 @@ class App extends Component {
           value={this.state.input_description}
           onChange={this.handleChange}
         />
+        <button onClick={() => this.addTodo()}>Add</button>
         {this.state.todos.map((todo, index) => (
           <TodoDetail
             description={todo.description}
