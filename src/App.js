@@ -22,11 +22,24 @@ class App extends Component {
     });
   };
 
+  deleteTodo = async index => {
+    await axios
+      .delete(`http://localhost:3000/todos/${index}`)
+      .then(res => console.log(res));
+    this.getAllTodos();
+  };
+
   render() {
     return (
       <div>
-        {this.state.todos.map(todo => (
-          <TodoDetail description={todo.description} done={todo.done} />
+        {this.state.todos.map((todo, index) => (
+          <TodoDetail
+            description={todo.description}
+            done={todo.done}
+            key={index}
+            index={index}
+            deleteTodo={this.deleteTodo}
+          />
         ))}
       </div>
     );
