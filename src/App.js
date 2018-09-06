@@ -6,8 +6,19 @@ import axios from "axios";
 export default class App extends Component {
   constructor() {
     super();
+    this.state = {
+      isAuthenticated: false
+    };
     this.loginUser = this.loginUser.bind(this);
     this.registerUser = this.registerUser.bind(this);
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      this.setState({ isAuthenticated: true });
+    } else {
+      this.setState({ isAuthenticated: false });
+    }
   }
 
   // Login function
@@ -21,7 +32,12 @@ export default class App extends Component {
         }
       )
       .then(data => {
-        console.log(data);
+        if (data.data.message === "You are logged in") {
+          localStorage.setItem("token", data.data.token);
+          this.setState({ isAuthenticated: true });
+        } else {
+          alert("ERROR!");
+        }
       })
       .catch(err => console.log(err));
   }
@@ -39,7 +55,12 @@ export default class App extends Component {
         }
       )
       .then(data => {
-        console.log(data);
+        if (data.data.message === "insert account data success") {
+          localStorage.setItem("token", data.data.token);
+          this.setState({ isAuthenticated: true });
+        } else {
+          alert("ERROR!");
+        }
       })
       .catch(err => console.log(err));
   }
@@ -55,6 +76,11 @@ export default class App extends Component {
         <hr />
         <div>
           <h1>Dashboard</h1>
+          {this.state.isAuthenticated ? (
+            <h1>You are authenticated!</h1>
+          ) : (
+            <h1>You are not authenticated!</h1>
+          )}
         </div>
       </div>
     );
