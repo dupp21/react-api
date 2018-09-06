@@ -5,19 +5,6 @@ import Login from "./components/Login";
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {
-      isAuthenticated: false
-    };
-    this.getEmployees = this.getEmployees.bind(this);
-  }
-
-  // Function for get employees data
-  getEmployees() {
-    if (this.state.isAuthenticated) {
-      console.log("GET EMPLOYEES");
-    } else {
-      alert("You are not authenticated");
-    }
   }
 
   // Login function
