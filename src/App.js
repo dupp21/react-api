@@ -16,11 +16,12 @@ class App extends Component {
   }
   
   //Using UNSAFE_componentWillMount often leads to bugs and inconsistencies, and for that reason it is going to be deprecated in the future.
-  UNSAFE_componentWillMount = async () => {
+  UNSAFE_componentWillMount =  () => {
     console.log("componentWillMount");
   };
 
   componentDidMount = () => {
+    this.getAllTodos();
     console.log("componentDidMount");
   };
 
@@ -30,7 +31,6 @@ class App extends Component {
   };
 
   componentDidUpdate = () => {
-    this.getAllTodos();
     console.log("shouldComponentUpdate");
   };
 
