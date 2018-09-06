@@ -6,9 +6,6 @@ import axios from "axios";
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {
-      isAuthenticated: false
-    };
     this.loginUser = this.loginUser.bind(this);
     this.registerUser = this.registerUser.bind(this);
   }
