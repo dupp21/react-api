@@ -12,10 +12,26 @@ class App extends Component {
       input_done: false,
       input_search: ""
     };
+    console.log("constructor");
   }
+  
+  //Using UNSAFE_componentWillMount often leads to bugs and inconsistencies, and for that reason it is going to be deprecated in the future.
+  UNSAFE_componentWillMount = async () => {
+    console.log("componentWillMount");
+  };
 
-  componentWillMount = async () => {
+  componentDidMount = () => {
+    console.log("componentDidMount");
+  };
+
+  shouldComponentUpdate = () => {
+    console.log("shouldComponentUpdate");
+    return true; //componentDidUpdate() and render() will not be invoked if shouldComponentUpdate() returns false.
+  };
+
+  componentDidUpdate = () => {
     this.getAllTodos();
+    console.log("shouldComponentUpdate");
   };
 
   getAllTodos = async () => {
@@ -69,6 +85,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("render");
     return (
       <div>
         {/* ----------------------------------------------------------------------------------------------- */}
