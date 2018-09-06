@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+}
