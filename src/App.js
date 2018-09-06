@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import axios from "axios";
 
 export default class App extends Component {
   constructor() {
@@ -8,33 +9,42 @@ export default class App extends Component {
     this.state = {
       isAuthenticated: false
     };
-    this.getEmployees = this.getEmployees.bind(this);
-  }
-
-  // Function for get employees data
-  getEmployees() {
-    if (this.state.isAuthenticated) {
-      console.log("GET EMPLOYEES");
-    } else {
-      alert("You are not authenticated");
-    }
+    this.loginUser = this.loginUser.bind(this);
+    this.registerUser = this.registerUser.bind(this);
   }
 
   // Login function
   loginUser(email, password) {
-    const data = { email: email, password: password };
-    console.log(data);
+    axios
+      .post(
+        "http://ec2-18-219-190-207.us-east-2.compute.amazonaws.com/accounts/login",
+        {
+          email: email,
+          password: password
+        }
+      )
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
   }
 
   // Register function
   registerUser(first_name, last_name, email, password) {
-    const data = {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password
-    };
-    console.log(data);
+    axios
+      .post(
+        "http://ec2-18-219-190-207.us-east-2.compute.amazonaws.com/accounts/register",
+        {
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          password: password
+        }
+      )
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
