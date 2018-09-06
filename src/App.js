@@ -7,7 +7,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import Protected from "./Protected";
+import EmployeeList from "./EmployeeList";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./Home";
 import Login from "./Login";
@@ -21,8 +21,8 @@ class App extends Component {
     };
   }
 
-  login = (email, password) => {
-    axios
+  login = async (email, password) => {
+    await axios
       .post(`${process.env.REACT_APP_API_URL}/accounts/login`, {
         email: email,
         password: password
@@ -35,23 +35,31 @@ class App extends Component {
       });
   };
 
+  logout = () => {
+    localStorage.removeItem("token");
+    this.setState({
+      isAuthenticated: false
+    });
+  };
+
   render() {
     return (
       <Router>
         <div>
           <nav className="nav-bar">
             <div>
-              <Link to="/">Home Page</Link> |{" "}
-              <Link to="/employees">Employees Data</Link>
+              <Link to="/">Home</Link> | <Link to="/employees">Employees</Link>
             </div>
             {this.state.isAuthenticated ? (
-              <div>ProfPict</div>
+              <div>
+                Welcome !!!,<button onClick={() => this.logout()}>Logout</button>
+              </div>
             ) : (
-              <Link to="/login">Login</Link>
+              <Link to="/login">Login </Link>
             )}
           </nav>
+          <hr />
           <Route exact path="/" component={Home} />
-
           <Route
             path="/login"
             render={props => (
@@ -62,7 +70,11 @@ class App extends Component {
               />
             )}
           />
-          <PrivateRoute path="/employees" component={Protected} />
+          <PrivateRoute
+            path="/employees"
+            component={EmployeeList}
+            isAuthenticated={this.state.isAuthenticated}
+          />
         </div>
       </Router>
     );
