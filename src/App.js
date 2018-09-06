@@ -3,10 +3,6 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 
 export default class App extends Component {
-  constructor() {
-    super();
-  }
-
   // Login function
   loginUser(email, password) {
     const data = { email: email, password: password };
