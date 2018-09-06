@@ -56,6 +56,7 @@ class App extends Component {
             path="/login"
             render={props => (
               <Login
+                login={this.login}
                 isAuthenticated={this.state.isAuthenticated}
                 {...props}
               />
