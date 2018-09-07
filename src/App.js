@@ -7,6 +7,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import axios from "axios"
 import Login from "./Login";
 import Home from "./Home";
 import EmployeeList from "./EmployeeList";
@@ -18,6 +19,22 @@ class App extends Component {
       isAuthenticated: false
     };
   }
+
+  login = async (email, password) => {
+    await axios
+      .post(`${process.env.REACT_APP_API_URL}/accounts/login`, {
+        email: email,
+        password: password
+      })
+      .then(async res => {
+        if (res.data.token) {
+          localStorage.token = res.data.token;
+          await this.setState({
+            isAuthenticated: true
+          });
+        }
+      });
+  };
 
   render() {
     return (
