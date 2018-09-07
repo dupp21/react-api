@@ -7,6 +7,9 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
+import Login from "./Login";
+import Home from "./Home";
+import EmployeeList from "./EmployeeList";
 
 class App extends Component {
   constructor() {
@@ -34,6 +37,22 @@ class App extends Component {
             )}
           </nav>
           <hr />
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/login"
+            render={props => (
+              <Login isAuthenticated={this.state.isAuthenticated} {...props} />
+            )}
+          />
+          <Route
+            path="/employees"
+            render={props => (
+              <EmployeeList
+                isAuthenticated={this.state.isAuthenticated}
+                {...props}
+              />
+            )}
+          />
         </div>
       </Router>
     );
