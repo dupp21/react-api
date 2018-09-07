@@ -23,7 +23,7 @@ class Login extends Component {
   };
 
   render() {
-    const { input_email, input_password } = this.state;
+    const {input_email, input_password} = this.state
     return (
       <div>
         {this.renderRedirect()}
@@ -44,7 +44,10 @@ class Login extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <button onClick={() => this.props.login(input_email, input_password)}>
+        <button
+          onClick={() =>
+            this.props.login(input_email,input_password)
+          }>
           Login
         </button>
       </div>
