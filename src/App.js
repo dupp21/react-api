@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,26 +15,27 @@ class App extends Component {
       isAuthenticated: false
     };
   }
-  
+
   render() {
     return (
       <Router>
-      <div>
-        <nav className="nav-bar">
-          <div>
-            <Link to="/">Home</Link> | <Link to="/employees">Employees</Link>
-          </div>
-          {this.state.isAuthenticated ? (
+        <div>
+          <nav className="nav-bar">
             <div>
-              Welcome !!!,<button onClick={() => this.logout()}>Logout</button>
+              <Link to="/">Home</Link> | <Link to="/employees">Employees</Link>
             </div>
-          ) : (
-            <Link to="/login">Login </Link>
-          )}
-        </nav>
-        <hr />
-      </div>
-    </Router>
+            {this.state.isAuthenticated ? (
+              <div>
+                Welcome !!!,
+                <button onClick={() => this.logout()}>Logout</button>
+              </div>
+            ) : (
+              <Link to="/login">Login </Link>
+            )}
+          </nav>
+          <hr />
+        </div>
+      </Router>
     );
   }
 }
