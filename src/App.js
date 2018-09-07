@@ -42,6 +42,14 @@ class App extends Component {
     });
   };
 
+  componentDidMount = async () => {
+    if(localStorage.token){
+      await this.setState({
+        isAuthenticated: true
+      });
+    }
+  }
+
   render() {
     return (
       <Router>

@@ -10,17 +10,15 @@ class EmployeeList extends Component {
   }
 
   componentDidMount = () => {
-      console.log(localStorage.token)
     axios
-      .get(`${process.env.REACT_APP_API_URL}/employees`, {
-        header: {
+      .get(`${process.env.REACT_APP_API_URL}/employees/search?limit=15`, {
+        headers: {
           Authorization: `Bearer ${localStorage.token}`
         }
       })
       .then(res => {
-        console.log(res.data);
         this.setState({
-          employees: res.data.data
+          employees: res.data.data.rows
         });
       });
   };
@@ -28,6 +26,10 @@ class EmployeeList extends Component {
     return (
       <div>
         <h1>Employee List</h1>
+        {this.state.employees.map((employee,index)=><div>
+          name: {`${employee.first_name} ${employee.last_name}`} <br/>
+
+        </div>)}
       </div>
     );
   }
