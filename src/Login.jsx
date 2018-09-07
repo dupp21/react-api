@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -15,9 +16,16 @@ class Login extends Component {
     });
   };
 
+  renderRedirect = () => {
+    if (this.props.isAuthenticated === true) {
+      return <Redirect to="/employees" />;
+    }
+  };
+
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <h1>Login Page</h1>
         Email : <br />
         <input
