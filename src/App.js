@@ -36,6 +36,13 @@ class App extends Component {
       });
   };
 
+  logout = () => {
+    localStorage.removeItem("token");
+    this.setState({
+      isAuthenticated: false
+    });
+  };
+
   render() {
     return (
       <Router>
