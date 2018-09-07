@@ -7,7 +7,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import Login from "./Login";
 import Home from "./Home";
 import EmployeeList from "./EmployeeList";
@@ -67,7 +67,11 @@ class App extends Component {
           <Route
             path="/login"
             render={props => (
-              <Login isAuthenticated={this.state.isAuthenticated} {...props} />
+              <Login
+                login={this.login}
+                isAuthenticated={this.state.isAuthenticated}
+                {...props}
+              />
             )}
           />
         </div>
