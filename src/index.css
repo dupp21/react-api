@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 25px;
+}

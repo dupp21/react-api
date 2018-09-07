@@ -9,6 +9,13 @@ import {
 } from "react-router-dom";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+  
   render() {
     return (
       <Router>
