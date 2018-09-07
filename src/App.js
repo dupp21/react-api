@@ -39,18 +39,18 @@ class App extends Component {
           <hr />
           <Route exact path="/" component={Home} />
           <Route
-            path="/login"
-            render={props => (
-              <Login isAuthenticated={this.state.isAuthenticated} {...props} />
-            )}
-          />
-          <Route
             path="/employees"
             render={props => (
               <EmployeeList
                 isAuthenticated={this.state.isAuthenticated}
                 {...props}
               />
+            )}
+          />
+          <Route
+            path="/login"
+            render={props => (
+              <Login isAuthenticated={this.state.isAuthenticated} {...props} />
             )}
           />
         </div>
