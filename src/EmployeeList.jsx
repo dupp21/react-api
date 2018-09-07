@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
 import { Redirect } from "react-router-dom";
 class EmployeeList extends Component {
   constructor(props) {
@@ -23,9 +23,11 @@ class EmployeeList extends Component {
         }
       })
       .then(res => {
-        this.setState({
-          employees: res.data.data.rows
-        });
+        if (res.data.data) {
+          this.setState({
+            employees: res.data.data.rows
+          });
+        }
       });
   };
 
